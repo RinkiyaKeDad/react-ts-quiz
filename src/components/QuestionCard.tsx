@@ -1,5 +1,6 @@
 import React from 'react';
 import { AnswerObject } from '../App';
+import './QuestionCardStyles.css';
 
 type PropDetails = {
   question: string;
@@ -27,7 +28,32 @@ const QuestionCard: React.FC<PropDetails> = ({
       <div>
         {answers.map(answer => (
           <div key={answer}>
-            <button disabled={!!userAnswer} value={answer} onClick={callback}>
+            <button
+              disabled={!!userAnswer}
+              value={answer}
+              onClick={callback}
+              className={`${
+                !!userAnswer &&
+                userAnswer.correct &&
+                userAnswer.answer === answer
+                  ? 'correct'
+                  : ''
+              }  ${
+                !!userAnswer &&
+                !userAnswer.correct &&
+                userAnswer.answer === answer
+                  ? 'wrong'
+                  : ''
+              }
+              ${
+                !!userAnswer &&
+                !userAnswer.correct &&
+                userAnswer.correctAnswer === answer
+                  ? 'correct'
+                  : ''
+              }
+              `}
+            >
               <span>{answer}</span>
             </button>
           </div>
