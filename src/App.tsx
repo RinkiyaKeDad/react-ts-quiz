@@ -13,7 +13,7 @@ export type AnswerObject = {
 
 const TOTAL_QUESTIONS = 10;
 
-function App() {
+function App: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState<QuestionsState[]>([]);
   const [number, setNumber] = useState(0);
